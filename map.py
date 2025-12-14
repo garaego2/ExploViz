@@ -47,5 +47,7 @@ fig.update_layout(
     font=dict(family='Arial, sans-serif', size=12)
 )
 
-# Show the plot
-fig.show()
+# Write the plot out to HTML so it can be embedded
+out_file = 'map.html'
+fig.write_html(out_file, auto_open=False, include_plotlyjs='cdn', full_html=True)
+print(f"Wrote map to {out_file}")

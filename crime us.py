@@ -92,6 +92,7 @@ fig.update_layout(
     ),
     showlegend=True
 )
-# Write to HTML file and open
+# Write to HTML file (dashboard) without auto-opening the browser
 out_file = 'dashboard.html'
-fig.write_html(out_file, auto_open=True)
+fig.write_html(out_file, auto_open=False, include_plotlyjs='cdn', full_html=True)
+print(f"Wrote dashboard to {out_file}")
