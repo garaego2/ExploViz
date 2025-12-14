@@ -1,12 +1,10 @@
 import pandas as pd
 import plotly.graph_objects as go
 
-# If you have a CSV file, replace the sample data section with:
 df = pd.read_csv('data-table.csv')
 if df['DEATHS'].dtype == 'object':
     df['DEATHS'] = df['DEATHS'].str.replace(',', '').astype(int)
 
-# Create the choropleth map
 fig = go.Figure(data=go.Choropleth(
     locations=df['STATE'],
     z=df['RATE'],
@@ -25,7 +23,6 @@ fig = go.Figure(data=go.Choropleth(
     marker_line_width=1.5
 ))
 
-# Update the layout
 fig.update_layout(
     title={
         'text': 'Crime Rate by State (2023)',
@@ -47,7 +44,5 @@ fig.update_layout(
     font=dict(family='Arial, sans-serif', size=12)
 )
 
-# Write the plot out to HTML so it can be embedded
 out_file = 'map.html'
 fig.write_html(out_file, auto_open=False, include_plotlyjs='cdn', full_html=True)
-print(f"Wrote map to {out_file}")

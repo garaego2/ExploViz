@@ -3,64 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>ExploViz — US Crime Dashboard</title>
-    <meta name="description" content="ExploViz — interactive visualisations of US crime statistics." />
-    <link rel="icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <title>US Crime </title>
+    <meta name="description" content="ExploViz " />
     <style>
-      :root{--accent:#e74c3c}
       html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial,Helvetica,sans-serif;color:#111}
-      header{background:#2b2b2b;color:#fff;padding:20px;text-align:center}
-      .container{max-width:1100px;margin:28px auto;padding:0 16px}
-      .tabs{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center;margin-bottom:14px}
-      .tab-btn{appearance:none;border:0;background:#f3f3f3;padding:8px 12px;border-radius:6px;cursor:pointer}
-      .tab-btn.active{background:var(--accent);color:#fff}
-      .btn{display:inline-block;padding:8px 12px;border-radius:6px;background:var(--accent);color:#fff;text-decoration:none;margin-left:8px}
-      .note{color:#444;font-size:0.95rem;margin-top:8px;text-align:center}
-      .iframe-container{background:#fff;border:1px solid #e6e6e6;border-radius:6px;overflow:hidden}
-      .view{display:none}
-      .view.active{display:block}
-      iframe{width:100%;height:780px;border:0}
-      @media (max-width:700px){iframe{height:600px}}
-      pre.note{background:#fafafa;padding:10px;border-radius:6px;border:1px solid #eee;display:inline-block}
+      .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:24px}
+      h1{margin:0 0 18px 0;font-size:1.25rem;color:#222}
+      .open-btn{background:#e74c3c;color:#fff;padding:12px 18px;border-radius:8px;text-decoration:none;font-weight:600}
+      .note{color:#666;font-size:0.95rem;margin-top:12px}
     </style>
   </head>
   <body>
-    <header>
-      <h1 style="margin:0;font-size:1.25rem">ExploViz — US Crime Dashboard</h1>
-    </header>
-
-    <div class="container">
-      <div class="tabs" role="tablist" aria-label="Views">
-        <button class="tab-btn active" data-target="dashboard" aria-controls="dashboard">Dashboard</button>
-        <button class="tab-btn" data-target="map" aria-controls="map">Map</button>
-        <a class="btn" href="dashboard.html" target="_blank" rel="noopener">Open dashboard (new tab)</a>
-        <a class="btn" href="map.html" target="_blank" rel="noopener">Open map (new tab)</a>
-      </div>
-
-      <p class="note">If the embedded view below is blank locally, serve the folder with a simple HTTP server:</p>
-      <pre class="note">python -m http.server 8000</pre>
-
-      <div class="iframe-container" style="margin-top:14px">
-        <div id="dashboard" class="view active" role="tabpanel">
-          <iframe src="dashboard.html" title="ExploViz dashboard" loading="lazy"></iframe>
-        </div>
-        <div id="map" class="view" role="tabpanel">
-          <iframe src="map.html" title="ExploViz map" loading="lazy"></iframe>
-        </div>
-      </div>
+    <div class="wrap">
+      <h1>US Crime Visualization</h1>
+      <a class="open-btn" href="dashboard.html" target="_blank" rel="noopener">Open dashboard</a>
+      <p class="note">Serve this folder with a static HTTP server for local embedding: <code>python -m http.server 8000</code></p>
     </div>
-
-    <script>
-      // Simple tab switching
-      const buttons = document.querySelectorAll('.tab-btn');
-      buttons.forEach(btn => btn.addEventListener('click', () => {
-        const target = btn.getAttribute('data-target');
-        // toggle active on buttons
-        buttons.forEach(b => b.classList.toggle('active', b === btn));
-        // show/hide views
-        document.querySelectorAll('.view').forEach(v => v.classList.toggle('active', v.id === target));
-      }));
-    </script>
   </body>
 </html>

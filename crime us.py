@@ -3,7 +3,6 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from datetime import datetime
 
-# Load both datasets
 ts_df = pd.read_csv('filtered_data.csv')
 ts_df['date_parsed'] = pd.to_datetime(ts_df['date'], format='%B %Y')
 
@@ -11,7 +10,6 @@ state_df = pd.read_csv('data-table.csv')
 if state_df['DEATHS'].dtype == 'object':
     state_df['DEATHS'] = state_df['DEATHS'].str.replace(',', '').astype(int)
 
-# Create subplots: time series on top (60% height), map on bottom (40% height)
 fig = make_subplots(
     rows=2, cols=1,
     subplot_titles=('Reported Murders Over Time (National)', 'Crime Rate by State'),
@@ -20,7 +18,6 @@ fig = make_subplots(
     row_heights=[0.55, 0.45]
 )
 
-# Add time series trace to top subplot
 fig.add_trace(
     go.Scatter(
         x=ts_df['date_parsed'],
@@ -34,7 +31,6 @@ fig.add_trace(
     row=1, col=1
 )
 
-# Add choropleth map trace to bottom subplot
 fig.add_trace(
     go.Choropleth(
         locations=state_df['STATE'],
@@ -53,11 +49,9 @@ fig.add_trace(
     row=2, col=1
 )
 
-# Update layout for time series axes
 fig.update_xaxes(title_text='Date', row=1, col=1, showgrid=True, gridcolor='lightgray')
 fig.update_yaxes(title_text='Reported Murders', row=1, col=1, showgrid=True, gridcolor='lightgray')
 
-# Update geo for the map
 fig.update_geos(
     scope='usa',
     projection=go.layout.geo.Projection(type='albers usa'),
@@ -67,7 +61,7 @@ fig.update_geos(
     row=2, col=1, 
 )
 
-# Update overall layout
+
 fig.update_layout(
     title={
         'text': 'US Crime & Murder Statistics Dashboard',
@@ -92,7 +86,6 @@ fig.update_layout(
     ),
     showlegend=True
 )
-# Write to HTML file (dashboard) without auto-opening the browser
+
 out_file = 'dashboard.html'
 fig.write_html(out_file, auto_open=False, include_plotlyjs='cdn', full_html=True)
-print(f"Wrote dashboard to {out_file}")
