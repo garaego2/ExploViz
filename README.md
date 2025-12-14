@@ -1,14 +1,15 @@
 ## Project description
-Explorative information visualization course project that generates interactive visualizations. It describes crime in the US
+Explorative information visualization course project that generates interactive visualizations. It describes crime rates in the US in the 
+shape of a graph and map.
 
-## Quick start 🚀
+## Quick start
 
 ```bash
 python3 "crime us.py" 
 python3 map.py 
 ```
 
-then erve the folder locally and open the site:
+To serve the folder locally:
 
 ```bash
 python -m http.server 8000
