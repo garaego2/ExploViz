@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>US Crime </title>
-    <meta name="description" content="ExploViz " />
+    <title>ExploViz — US Crime Dashboard</title>
+    <meta http-equiv="refresh" content="0;url=dashboard.html">
+    <meta name="description" content="ExploViz — US crime visualisations" />
     <style>
       html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial,Helvetica,sans-serif;color:#111}
       .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:24px}
@@ -14,10 +15,14 @@
     </style>
   </head>
   <body>
+    <script>
+      try {
+        window.location.replace('dashboard.html');
+      } catch (e) {
+      }
+    </script>
     <div class="wrap">
-      <h1>US Crime Visualization</h1>
-      <a class="open-btn" href="dashboard.html" target="_blank" rel="noopener">Open dashboard</a>
-      <p class="note">Serve this folder with a static HTTP server for local embedding: <code>python -m http.server 8000</code></p>
+
     </div>
   </body>
 </html>
